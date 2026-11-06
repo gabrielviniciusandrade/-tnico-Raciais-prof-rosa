@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sankofa - Plataforma educativa de valorização das Relações Étnico-Raciais. Biografias, cultura, conceitos e letramento racial.">
+  <title>Sankofa | Educação das Relações Étnico-Raciais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+
+
+
+/* 1.
+
+
+
+O nome do nosso protótipo é Sankofa.
+
+Sankofa é um símbolo africano do povo Akan que significa ‘voltar e buscar’.
+
+A ideia é: a gente precisa olhar para o passado para construir um futuro melhor.
+
+Por isso escolhemos esse nome para a plataforma de Educação das Relações Étnico-Raciais.”
+
+
+
+
+
+2. Objetivo do site
+
+
+
+
+
+“O Sankofa é uma plataforma educativa interativa.
+
+Ela une empreendedorismo de impacto social com inovação tecnológica.
+
+O objetivo é valorizar a história, a cultura e os protagonistas negros e indígenas de forma dinâmica e acessível.”
+
+
+
+
+3.O que tem no site 
+
+
+
+
+
+Menu de navegação
+
+“Temos um menu funcional que funciona tanto no computador quanto no celular.”
+
+Trilha de Aprendizado
+
+“Organizamos o conteúdo em três eixos, como pedia a atividade:
+
+Biografias e Protagonismo
+Cultura e Ciência
+Conceitos e Letramento Racial”
+Biografias
+
+“Aqui apresentamos personalidades importantes:
+
+Dandara e Zumbi dos Palmares, Machado de Assis, Maria Firmina dos Reis, Ailton Krenak, Sueli Carneiro e Sonia Guajajara.”
+
+Cultura & Ciência
+
+“Mostramos contribuições em agricultura, literatura, gastronomia, ciência, música e relação com o território.”
+
+Glossário pesquisável (recurso inovador)
+
+“Esse é um dos recursos inovadores: um glossário antirracista que a pessoa pode pesquisar em tempo real.
+
+Digita ‘racismo estrutural’, ‘ancestralidade’, ‘equidade’… e já aparece a explicação.”
+
+Quiz gamificado (recurso inovador)
+
+“Temos também um quiz interativo com pontuação e feedback.
+
+A pessoa responde, vê se acertou e recebe uma explicação. No final aparece a pontuação.”
+
+Fatos dinâmicos
+
+“E tem a seção ‘Sabia que…’ que gera fatos históricos de forma aleatória.”
+
+
+
+
+4. Identidade visual e tecnologia
+
+
+
+“A identidade visual foi pensada com cores de luxo: verde esmeralda e dourado champagne.
+
+A logo é o próprio símbolo Sankofa.
+
+O site foi feito com HTML5, CSS3 e JavaScript puro (Vanilla JS), é responsivo e funciona bem no celular e no computador.
+
+Usamos inteligência artificial para ajudar na ideação do nome, nos textos e na estrutura do código.”
+
+
+
+5. Fechamento
+
+
+
+“O Sankofa mostra que tecnologia pode ser usada para educação antirracista, valorização da diversidade e letramento racial.
+
+É um protótipo de impacto social, alinhado com as diretrizes do projeto ERER.
+
+Obrigado!” */
+
+
+
+
+
+
+
+/* ============================================
+   SANKOFA — Estilos principais
+   Identidade: verde floresta + ouro + pergaminho
+   Responsivo mobile-first
+   ============================================ */
+
+:root {
+  /* Paleta de luxo: esmeralda profunda + champagne gold + ivory */
+  --verde: #0A3D32;
+  --verde-escuro: #062820;
+  --verde-claro: #1B6B5A;
+  --ouro: #C9A84C;
+  --ouro-claro: #E8D48B;
+  --terra: #A67C3D;
+  --pergaminho: #FAF8F4;
+  --pergaminho-escuro: #F0EBE3;
+  --branco: #FFFFFF;
+  --texto: #141414;
+  --texto-suave: #4F4F4F;
+  --sombra: 0 10px 30px rgba(10, 61, 50, 0.09);
+  --sombra-forte: 0 16px 40px rgba(10, 61, 50, 0.14);
+  --raio: 18px;
+  --transicao: 0.25s ease;
+  --fonte: 'Outfit', system-ui, sans-serif;
+  --fonte-display: 'Playfair Display', Georgia, serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--fonte);
+  background: var(--pergaminho);
+  color: var(--texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(253, 246, 227, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 71, 42, 0.08);
+  transition: box-shadow var(--transicao);
+}
+
+.header.scrolled {
+  box-shadow: var(--sombra);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--verde);
+}
+
+.logo-icon {
+  color: var(--verde);
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  display: block;
+}
+
+.logo-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--terra);
+  letter-spacing: 0.02em;
+}
+
+/* Nav toggle (mobile) */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  background: var(--verde);
+  border-radius: 2px;
+  transition: var(--transicao);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(300px, 85vw);
+  height: 100vh;
+  background: var(--verde-escuro);
+  padding: 5.5rem 1.75rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.2);
+}
+
+.nav.open {
+  transform: translateX(0);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: var(--pergaminho);
+  font-weight: 500;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  transition: background var(--transicao);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  background: rgba(255,255,255,0.1);
+  outline: none;
+}
+
+/* Desktop nav */
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+
+  .nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    color: var(--verde);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    background: rgba(26, 71, 42, 0.08);
+  }
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 0 4rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 75% 55% at 78% 12%, rgba(201, 168, 76, 0.14), transparent),
+    radial-gradient(ellipse 55% 50% at 10% 88%, rgba(10, 61, 50, 0.12), transparent),
+    linear-gradient(165deg, var(--pergaminho) 0%, #F2EDE6 100%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.hero-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--verde-claro);
+  margin-bottom: 1rem;
+  background: rgba(45, 106, 79, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+.hero-title {
+  font-family: var(--fonte-display);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--verde-escuro);
+  margin-bottom: 1.25rem;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  transition: transform var(--transicao), box-shadow var(--transicao), background var(--transicao);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 4px 14px rgba(26, 71, 42, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--verde-escuro);
+  box-shadow: 0 6px 20px rgba(26, 71, 42, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--verde);
+  border: 2px solid var(--verde);
+}
+
+.btn-outline:hover {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.btn-sm {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.section-title {
+  font-family: var(--fonte-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  color: var(--verde-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Trilha */
+.trilha-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .trilha-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.trilha-card {
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 1.75rem;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(26, 71, 42, 0.06);
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.trilha-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-forte);
+}
+
+.trilha-num {
+  font-family: var(--fonte-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ouro);
+  margin-bottom: 0.6rem;
+}
+
+.trilha-card h3 {
+  font-size: 1.15rem;
+  color: var(--verde);
+  margin-bottom: 0.5rem;
+}
+
+.trilha-card p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+/* Biografias */
+.biografias {
+  background: linear-gradient(180deg, var(--pergaminho-escuro) 0%, var(--pergaminho) 100%);
+}
+
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bio-card {
+  background: var(--branco);
+  border-radius: var(--raio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicao);
+}
+
+.bio-card:hover {
+  transform: translateY(-5px);
+}
+
+.bio-img {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bio-initial {
+  font-family: var(--fonte-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.bio-img-dandara { background: linear-gradient(135deg, #1B6B5A, #0A3D32); }
+.bio-img-zumbi   { background: linear-gradient(135deg, #A67C3D, #6B4A1E); }
+.bio-img-machado { background: linear-gradient(135deg, #3D4A5C, #1E2733); }
+.bio-img-firmina { background: linear-gradient(135deg, #8B3A3A, #5C2222); }
+.bio-img-krenak  { background: linear-gradient(135deg, #2A5A8A, #16354F); }
+.bio-img-sueli   { background: linear-gradient(135deg, #5C3D8A, #35225C); }
+.bio-img-sonia   { background: linear-gradient(135deg, #0A3D32, #062820); }
+
+.bio-body {
+  padding: 1.35rem 1.4rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-body h3 {
+  font-size: 1.15rem;
+  color: var(--verde-escuro);
+  margin-bottom: 0.25rem;
+}
+
+.bio-meta {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ouro);
+  margin-bottom: 0.7rem;
+}
+
+.bio-body p:last-child {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  flex: 1;
+}
+
+/* Cultura */
+.cultura-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .cultura-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cultura-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cultura-card {
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 1.6rem;
+  box-shadow: var(--sombra);
+  border-top: 4px solid var(--ouro);
+  transition: transform var(--transicao);
+}
+
+.cultura-card:hover {
+  transform: translateY(-3px);
+}
+
+.cultura-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.cultura-card h3 {
+  font-size: 1.1rem;
+  color: var(--verde);
+  margin-bottom: 0.5rem;
+}
+
+.cultura-card p {
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+/* Conceitos / Glossário */
+.conceitos {
+  background: var(--verde-escuro);
+  color: var(--pergaminho);
+}
+
+.conceitos .section-title {
+  color: var(--pergaminho);
+}
+
+.conceitos .section-subtitle {
+  color: rgba(253, 246, 227, 0.75);
+}
+
+.glossario-box {
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+.search-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--ouro-claro);
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+#searchGlossario {
+  width: 100%;
+  padding: 0.9rem 1.1rem 0.9rem 2.8rem;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  color: var(--branco);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transicao), background var(--transicao);
+}
+
+#searchGlossario::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+#searchGlossario:focus {
+  border-color: var(--ouro);
+  background: rgba(255,255,255,0.12);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.search-hint {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: rgba(253, 246, 227, 0.55);
+}
+
+.conceitos-grid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .conceitos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .conceitos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.conceito-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 1.35rem;
+  transition: background var(--transicao), transform var(--transicao);
+}
+
+.conceito-card:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.conceito-card.hidden {
+  display: none;
+}
+
+.conceito-card h3 {
+  font-size: 1.05rem;
+  color: var(--ouro-claro);
+  margin-bottom: 0.5rem;
+}
+
+.conceito-card p {
+  font-size: 0.88rem;
+  color: rgba(253, 246, 227, 0.85);
+  line-height: 1.55;
+}
+
+/* Quiz */
+.quiz-section {
+  background: var(--pergaminho-escuro);
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--sombra-forte);
+}
+
+.quiz-progress {
+  height: 6px;
+  background: rgba(26, 71, 42, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 16.66%;
+  background: linear-gradient(90deg, var(--verde), var(--ouro));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.quiz-counter {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--terra);
+  margin-bottom: 1.25rem;
+}
+
+.quiz-question h3 {
+  font-size: 1.2rem;
+  color: var(--verde-escuro);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.95rem 1.15rem;
+  border: 2px solid rgba(26, 71, 42, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--texto);
+  transition: border-color var(--transicao), background var(--transicao);
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--verde);
+  background: rgba(26, 71, 42, 0.04);
+}
+
+.quiz-option.correct {
+  border-color: #0A3D32;
+  background: rgba(10, 61, 50, 0.12);
+  color: #062820;
+}
+
+.quiz-option.wrong {
+  border-color: #C53030;
+  background: rgba(197, 48, 48, 0.1);
+  color: #742A2A;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-feedback {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.quiz-feedback.correct {
+  background: rgba(10, 61, 50, 0.12);
+  color: #062820;
+}
+
+.quiz-feedback.wrong {
+  background: rgba(197, 48, 48, 0.1);
+  color: #742A2A;
+}
+
+.quiz-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.quiz-score {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.quiz-score h3 {
+  font-size: 1.2rem;
+  color: var(--verde);
+  margin-bottom: 0.5rem;
+}
+
+.score-number {
+  font-family: var(--fonte-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--ouro);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.score-message {
+  color: var(--texto-suave);
+  font-size: 1rem;
+}
+
+/* Fato */
+.fato {
+  padding: 3rem 0;
+}
+
+.fato-box {
+  background: var(--verde);
+  color: var(--pergaminho);
+  border-radius: var(--raio);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  box-shadow: var(--sombra-forte);
+}
+
+.fato-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  margin-bottom: 0.75rem;
+}
+
+.fato-texto {
+  font-family: var(--fonte-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fato-box .btn-outline {
+  border-color: var(--ouro-claro);
+  color: var(--ouro-claro);
+}
+
+.fato-box .btn-outline:hover {
+  background: var(--ouro-claro);
+  color: var(--verde-escuro);
+}
+
+/* Footer */
+.footer {
+  background: var(--verde-escuro);
+  color: rgba(253, 246, 227, 0.85);
+  padding: 2.75rem 0 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-brand {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--pergaminho);
+}
+
+.footer-info p {
+  margin-bottom: 0.35rem;
+}
+
+.footer-autoria {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--ouro-claro);
+}
+
+.footer-note {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  opacity: 0.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo" aria-label="Sankofa - Início">
+        <div class="logo-icon" aria-hidden="true">
+          <!-- Logo Sankofa de luxo – moderna e elegante -->
+          <svg viewBox="0 0 72 72" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Anel externo fino e sofisticado -->
+            <circle cx="36" cy="36" r="33" stroke="currentColor" stroke-width="1.8" opacity="0.85"/>
+            <!-- Anel interno sutil -->
+            <circle cx="36" cy="36" r="27.5" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+            
+            <!-- Corpo do pássaro (forma limpa e fluida) -->
+            <path d="M26 40.5c1.2-8.5 7.5-15 16.5-16 6.2-.7 11.8 2.2 14.5 7.2 2.2 4 1.6 8.8-1.2 12-3.2 3.6-8.2 5.2-13 4.6-5.5-.7-10.5-4-12.8-7.8z" 
+                  fill="currentColor" opacity="0.12"/>
+            
+            <!-- Contorno principal do corpo + pescoço curvado para trás -->
+            <path d="M27.5 41c1.5-8.2 7.8-14.5 16.2-15.2 5.8-.5 11 2.5 13.5 7 2 3.6 1.4 8-1.2 11-2.8 3.2-7.5 4.6-12 4-5.2-.7-10-3.8-12.5-7.5" 
+                  stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- Pescoço e cabeça virados para trás (movimento elegante) -->
+            <path d="M42 25.5c-2.8-4.2-8-5.8-12.2-3.8" 
+                  stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            
+            <!-- Bico delicado -->
+            <path d="M30.5 22.2l-5.2 1.8" 
+                  stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+            
+            <!-- Ovo dourado (símbolo do futuro / sabedoria) -->
+            <ellipse cx="24.8" cy="24.8" rx="3.8" ry="4.6" fill="currentColor"/>
+            
+            <!-- Olho -->
+            <circle cx="39.2" cy="26.2" r="1.7" fill="currentColor"/>
+            
+            <!-- Perna elegante -->
+            <path d="M34 47.5v7.5M34 55l-3.5 4M34 55l3.5 4" 
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Sankofa</span>
+          <span class="logo-tag">ERER • Raízes & Futuro</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Menu principal">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link">Início</a></li>
+          <li><a href="#biografias" class="nav-link">Biografias</a></li>
+          <li><a href="#cultura" class="nav-link">Cultura & Ciência</a></li>
+          <li><a href="#conceitos" class="nav-link">Conceitos</a></li>
+          <li><a href="#quiz" class="nav-link">Quiz</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <p class="hero-kicker">Plataforma Educativa • ERER</p>
+        <h1 class="hero-title">Voltar para buscar.<br>Seguir em frente com sabedoria.</h1>
+        <p class="hero-desc">
+          Sankofa é uma plataforma interativa de valorização das Relações Étnico-Raciais.
+          Conheça protagonistas negros e indígenas, explore contribuições culturais e científicas
+          e fortaleça o letramento racial de forma dinâmica e respeitosa.
+        </p>
+        <div class="hero-actions">
+          <a href="#biografias" class="btn btn-primary">Explorar Biografias</a>
+          <a href="#quiz" class="btn btn-outline">Fazer o Quiz</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE / TRILHA -->
+    <section class="section about" id="sobre">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Trilha de Aprendizado</h2>
+          <p class="section-subtitle">Três eixos temáticos para compreender, valorizar e transformar</p>
+        </div>
+        <div class="trilha-grid">
+          <article class="trilha-card">
+            <div class="trilha-num">01</div>
+            <h3>Biografias & Protagonismo</h3>
+            <p>Trajetórias de personalidades históricas e contemporâneas que construíram resistência, arte, ciência e liderança.</p>
+          </article>
+          <article class="trilha-card">
+            <div class="trilha-num">02</div>
+            <h3>Cultura & Ciência</h3>
+            <p>Contribuições africanas e de povos originários em filosofia, literatura, gastronomia, tecnologia e saberes ancestrais.</p>
+          </article>
+          <article class="trilha-card">
+            <div class="trilha-num">03</div>
+            <h3>Conceitos & Letramento</h3>
+            <p>Explicações claras sobre antirracismo, racismo estrutural, ancestralidade, representatividade e equidade.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIOGRAFIAS -->
+    <section class="section biografias" id="biografias">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Biografias & Protagonismo</h2>
+          <p class="section-subtitle">Histórias de coragem, intelecto e liderança</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="bio-card">
+            <div class="bio-img bio-img-dandara" role="img" aria-label="Ilustração de Dandara dos Palmares">
+              <span class="bio-initial">D</span>
+            </div>
+            <div class="bio-body">
+              <h3>Dandara dos Palmares</h3>
+              <p class="bio-meta">c. 1654 – 1694 • Quilombo dos Palmares</p>
+              <p>Guerreira e estrategista do Quilombo dos Palmares. Domina técnicas de capoeira, agricultura e defesa. Esposa de Zumbi, recusou acordos que mantinham a escravidão e preferiu a morte à volta ao cativeiro. Símbolo de resistência e liderança feminina negra.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-zumbi" role="img" aria-label="Ilustração de Zumbi dos Palmares">
+              <span class="bio-initial">Z</span>
+            </div>
+            <div class="bio-body">
+              <h3>Zumbi dos Palmares</h3>
+              <p class="bio-meta">1655 – 20 nov 1695 • Alagoas</p>
+              <p>Último líder do Quilombo dos Palmares, maior território de liberdade negra das Américas. Nascido livre, capturado na infância e educado por religiosos, fugiu e retornou para comandar a resistência. Sua morte é lembrada no Dia da Consciência Negra.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-machado" role="img" aria-label="Ilustração de Machado de Assis">
+              <span class="bio-initial">M</span>
+            </div>
+            <div class="bio-body">
+              <h3>Machado de Assis</h3>
+              <p class="bio-meta">1839 – 1908 • Rio de Janeiro</p>
+              <p>Um dos maiores escritores da literatura mundial. Neto de escravizados, tornou-se fundador e primeiro presidente da Academia Brasileira de Letras. Obras como <em>Dom Casmurro</em> e <em>Memórias Póstumas de Brás Cubas</em> revolucionaram a prosa em língua portuguesa.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-firmina" role="img" aria-label="Ilustração de Maria Firmina dos Reis">
+              <span class="bio-initial">F</span>
+            </div>
+            <div class="bio-body">
+              <h3>Maria Firmina dos Reis</h3>
+              <p class="bio-meta">1822 – 1917 • Maranhão</p>
+              <p>Primeira romancista negra da América Latina. Autora de <em>Úrsula</em> (1859), o primeiro romance abolicionista brasileiro. Professora e fundadora de escola mista e gratuita. Sua obra e vida afirmam a intelectualidade negra no século XIX.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-krenak" role="img" aria-label="Ilustração de Ailton Krenak">
+              <span class="bio-initial">K</span>
+            </div>
+            <div class="bio-body">
+              <h3>Ailton Krenak</h3>
+              <p class="bio-meta">1953 – • Minas Gerais</p>
+              <p>Líder indígena, escritor e pensador. Um dos principais articuladores da luta pelos direitos dos povos originários na Constituinte de 1988. Autor de obras como <em>Ideias para adiar o fim do mundo</em>, que propõe outros modos de habitar a Terra a partir dos saberes indígenas.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-sueli" role="img" aria-label="Ilustração de Sueli Carneiro">
+              <span class="bio-initial">S</span>
+            </div>
+            <div class="bio-body">
+              <h3>Sueli Carneiro</h3>
+              <p class="bio-meta">1950 – • São Paulo</p>
+              <p>Filósofa, ativista e uma das principais intelectuais do movimento negro brasileiro. Fundadora do Geledés – Instituto da Mulher Negra. Desenvolveu o conceito de “dispositivo de racialidade” e tem papel central no feminismo negro no Brasil.</p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-img bio-img-sonia" role="img" aria-label="Ilustração de Sonia Guajajara">
+              <span class="bio-initial">G</span>
+            </div>
+            <div class="bio-body">
+              <h3>Sonia Guajajara</h3>
+              <p class="bio-meta">1974 – • Maranhão</p>
+              <p>Liderança indígena guajajara, ativista ambiental e política. Coordenou a APIB e foi a primeira mulher indígena a ocupar o Ministério dos Povos Indígenas. Voz internacional na defesa da Amazônia, dos territórios e dos direitos dos povos originários.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULTURA E CIÊNCIA -->
+    <section class="section cultura" id="cultura">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Cultura & Ciência</h2>
+          <p class="section-subtitle">Saberes que atravessam oceanos e florestas</p>
+        </div>
+
+        <div class="cultura-grid">
+          <article class="cultura-card">
+            <div class="cultura-icon">🌱</div>
+            <h3>Agricultura & Saberes</h3>
+            <p>Técnicas de cultivo de milho, mandioca, feijão e banana nos quilombos e aldeias. Conhecimento agroecológico dos povos originários e africanos que sustentou comunidades autônomas por séculos.</p>
+          </article>
+          <article class="cultura-card">
+            <div class="cultura-icon">📖</div>
+            <h3>Literatura & Filosofia</h3>
+            <p>De Maria Firmina a Conceição Evaristo, de Machado de Assis a Ailton Krenak: produção literária e filosófica que questiona a colonialidade e afirma outras formas de existência e conhecimento.</p>
+          </article>
+          <article class="cultura-card">
+            <div class="cultura-icon">🍲</div>
+            <h3>Gastronomia Ancestral</h3>
+            <p>Acarajé, vatapá, moqueca, beiju, tapioca, pequi e açaí. A cozinha brasileira é resultado de encontros e resistências de matrizes africanas e indígenas que moldaram o sabor do país.</p>
+          </article>
+          <article class="cultura-card">
+            <div class="cultura-icon">🔬</div>
+            <h3>Ciência & Tecnologia</h3>
+            <p>Contribuições em metalurgia, medicina tradicional, navegação, matemática e observações astronômicas. Saberes que foram apropriados ou silenciados, mas que permanecem vivos nas práticas comunitárias.</p>
+          </article>
+          <article class="cultura-card">
+            <div class="cultura-icon">🥁</div>
+            <h3>Música & Corpo</h3>
+            <p>Capoeira, jongo, maracatu, samba de roda, cantos indígenas e tambores. Expressões que unem espiritualidade, luta e celebração, preservando memória e identidade através do ritmo.</p>
+          </article>
+          <article class="cultura-card">
+            <div class="cultura-icon">🌍</div>
+            <h3>Território & Ecologia</h3>
+            <p>A relação dos povos indígenas com a terra como ser vivo. Conceitos como “bem viver” (teko porã, sumak kawsay) oferecem alternativas ao modelo de exploração que ameaça o planeta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEITOS + GLOSSÁRIO -->
+    <section class="section conceitos" id="conceitos">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Conceitos & Letramento Racial</h2>
+          <p class="section-subtitle">Ferramentas para compreender e transformar a realidade</p>
+        </div>
+
+        <div class="glossario-box">
+          <label for="searchGlossario" class="search-label">Pesquisar no glossário antirracista</label>
+          <div class="search-wrapper">
+            <input type="search" id="searchGlossario" placeholder="Digite um conceito (ex: racismo estrutural, ancestralidade...)" autocomplete="off">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+          </div>
+          <p class="search-hint" id="searchHint">Mostrando todos os conceitos</p>
+        </div>
+
+        <div class="conceitos-grid" id="conceitosGrid">
+          <article class="conceito-card" data-keywords="antirracismo antiracismo luta contra racismo">
+            <h3>Antirracismo</h3>
+            <p>Prática ativa de combate ao racismo em todas as suas formas. Não é apenas “não ser racista”, mas agir para desmontar estruturas, discursos e práticas que reproduzem desigualdade racial.</p>
+          </article>
+          <article class="conceito-card" data-keywords="racismo estrutural sistema desigualdade">
+            <h3>Racismo Estrutural</h3>
+            <p>Forma de racismo que está enraizada nas instituições, nas leis, na economia e na cultura. Não depende apenas de intenções individuais: produz resultados desiguais mesmo sem “racistas declarados”.</p>
+          </article>
+          <article class="conceito-card" data-keywords="ancestralidade ancestrais memória raiz">
+            <h3>Ancestralidade</h3>
+            <p>Reconhecimento e valorização da herança cultural, espiritual e histórica dos antepassados. É fonte de identidade, força e continuidade dos saberes de povos africanos e indígenas.</p>
+          </article>
+          <article class="conceito-card" data-keywords="representatividade representação presença">
+            <h3>Representatividade</h3>
+            <p>Presença significativa de pessoas negras e indígenas em espaços de poder, mídia, ciência e cultura. Mais do que “aparecer”, trata-se de ter voz, decisão e protagonismo real.</p>
+          </article>
+          <article class="conceito-card" data-keywords="pertencimento identidade comunidade">
+            <h3>Pertencimento</h3>
+            <p>Sentimento de fazer parte de um grupo, território ou história. O pertencimento racial e cultural fortalece a autoestima coletiva e combate o apagamento histórico.</p>
+          </article>
+          <article class="conceito-card" data-keywords="equidade igualdade justiça">
+            <h3>Equidade</h3>
+            <p>Tratar de forma justa considerando as diferenças e desigualdades históricas. Diferente de igualdade formal, a equidade busca corrigir desvantagens acumuladas para garantir oportunidades reais.</p>
+          </article>
+          <article class="conceito-card" data-keywords="quilombo quilombola liberdade">
+            <h3>Quilombo</h3>
+            <p>Comunidade formada por pessoas escravizadas que fugiram e construíram territórios de liberdade, autonomia e resistência. Palmares é o exemplo mais conhecido, mas existem milhares de quilombos no Brasil.</p>
+          </article>
+          <article class="conceito-card" data-keywords="letramento racial consciência">
+            <h3>Letramento Racial</h3>
+            <p>Capacidade de ler, interpretar e agir sobre as dinâmicas raciais da sociedade. Inclui conhecer a história, reconhecer privilégios e desigualdades e desenvolver práticas antirracistas no cotidiano.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section quiz-section" id="quiz">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Quiz Sankofa</h2>
+          <p class="section-subtitle">Teste seus conhecimentos sobre relações étnico-raciais</p>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+          <div class="quiz-progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p class="quiz-counter" id="quizCounter">Pergunta 1 de 6</p>
+
+          <div class="quiz-question" id="quizQuestion"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-feedback" id="quizFeedback" hidden></div>
+
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="btnNext" hidden>Próxima</button>
+            <button class="btn btn-primary" id="btnRestart" hidden>Reiniciar Quiz</button>
+          </div>
+
+          <div class="quiz-score" id="quizScore" hidden>
+            <h3>Resultado Final</h3>
+            <p class="score-number" id="scoreNumber">0</p>
+            <p class="score-message" id="scoreMessage"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITAÇÃO / FATO ALEATÓRIO -->
+    <section class="section fato">
+      <div class="container">
+        <div class="fato-box">
+          <p class="fato-label">Sabia que...</p>
+          <blockquote class="fato-texto" id="fatoTexto">
+            O Quilombo dos Palmares chegou a reunir dezenas de milhares de pessoas e resistiu por quase um século às tentativas de destruição colonial.
+          </blockquote>
+          <button class="btn btn-outline btn-sm" id="btnNovoFato">Novo fato</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Sankofa</strong> — Plataforma educativa de Relações Étnico-Raciais
+      </div>
+      <div class="footer-info">
+        <p>Projeto desenvolvido no âmbito da disciplina <strong>Inovação Tecnológica e Empreendedorismo</strong></p>
+        <p>Colégio Estadual Presidente Kennedy • Técnico em Desenvolvimento de Sistemas • 2º Ano</p>
+        <p class="footer-autoria">Desenvolvido por alunos    ----GABRIEL ANDRADE, LUIS FELIPE, JULIO----     da turma — 2026</p>
+      </div>
+      <p class="footer-note">Conteúdo elaborado com apoio de assistentes de Inteligência Artificial para ideação, textos e estrutura. Ilustrações conceituais geradas/adaptadas via IA e representações simbólicas.</p>
+    </div>
+  </footer>
+
+  <script>
+/* ============================================
+   SANKOFA — Lógica interativa (Vanilla JS)
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu();
+  initHeaderScroll();
+  initGlossario();
+  initQuiz();
+  initFatos();
+});
+
+/* ---------- MENU MOBILE ---------- */
+function initMenu() {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  const links = document.querySelectorAll('.nav-link');
+
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.classList.toggle('active', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('open') &&
+        !nav.contains(e.target) &&
+        !toggle.contains(e.target)) {
+      nav.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+/* ---------- HEADER SCROLL ---------- */
+function initHeaderScroll() {
+  const header = document.getElementById('header');
+  if (!header) return;
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ---------- GLOSSÁRIO PESQUISÁVEL ---------- */
+function initGlossario() {
+  const input = document.getElementById('searchGlossario');
+  const grid = document.getElementById('conceitosGrid');
+  const hint = document.getElementById('searchHint');
+  if (!input || !grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.conceito-card'));
+
+  input.addEventListener('input', () => {
+    const termo = input.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    let visiveis = 0;
+
+    cards.forEach(card => {
+      const texto = (card.textContent + ' ' + (card.dataset.keywords || '')).toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const match = !termo || texto.includes(termo);
+      card.classList.toggle('hidden', !match);
+      if (match) visiveis++;
+    });
+
+    if (hint) {
+      if (!termo) {
+        hint.textContent = 'Mostrando todos os conceitos';
+      } else if (visiveis === 0) {
+        hint.textContent = 'Nenhum conceito encontrado para "' + input.value + '"';
+      } else {
+        hint.textContent = visiveis + ' conceito(s) encontrado(s)';
+      }
+    }
+  });
+}
+
+/* ---------- QUIZ GAMIFICADO ---------- */
+const quizData = [
+  {
+    pergunta: 'O que significa a palavra "Sankofa" de origem Akan (Gana)?',
+    opcoes: [
+      'Lutar até o fim',
+      'Voltar e buscar / aprender com o passado',
+      'União faz a força',
+      'Terra sagrada'
+    ],
+    correta: 1,
+    explicacao: 'Sankofa significa "voltar e buscar". O símbolo do pássaro que olha para trás representa a importância de aprender com a história para construir o futuro.'
+  },
+  {
+    pergunta: 'Quem foi a líder guerreira do Quilombo dos Palmares, esposa de Zumbi?',
+    opcoes: [
+      'Aqualtune',
+      'Tereza de Benguela',
+      'Dandara dos Palmares',
+      'Luiza Mahin'
+    ],
+    correta: 2,
+    explicacao: 'Dandara dos Palmares foi estrategista e guerreira. Preferiu a morte à volta à escravidão quando foi capturada em 1694.'
+  },
+  {
+    pergunta: 'Em que data é celebrado o Dia Nacional de Zumbi e da Consciência Negra?',
+    opcoes: [
+      '13 de maio',
+      '20 de novembro',
+      '21 de março',
+      '25 de julho'
+    ],
+    correta: 1,
+    explicacao: '20 de novembro marca a morte de Zumbi dos Palmares em 1695 e se tornou o Dia da Consciência Negra no Brasil.'
+  },
+  {
+    pergunta: 'Maria Firmina dos Reis é reconhecida como:',
+    opcoes: [
+      'A primeira médica negra do Brasil',
+      'A primeira romancista negra da América Latina',
+      'Fundadora do movimento abolicionista',
+      'A primeira professora indígena'
+    ],
+    correta: 1,
+    explicacao: 'Publicou o romance Úrsula em 1859, décadas antes da abolição, tornando-se a primeira romancista negra da América Latina.'
+  },
+  {
+    pergunta: 'O que é "racismo estrutural"?',
+    opcoes: [
+      'Apenas insultos e agressões individuais',
+      'Uma ideologia antiga já superada',
+      'Desigualdades raciais reproduzidas pelas instituições e pela sociedade',
+      'Discriminação apenas no mercado de trabalho'
+    ],
+    correta: 2,
+    explicacao: 'Racismo estrutural é o conjunto de práticas e dinâmicas institucionais e culturais que produzem e mantêm desigualdades raciais de forma sistêmica.'
+  },
+  {
+    pergunta: 'Ailton Krenak é conhecido principalmente por:',
+    opcoes: [
+      'Ser ministro da Educação',
+      'Liderança indígena, escritor e pensador ambiental',
+      'Fundar a Academia Brasileira de Letras',
+      'Criar o primeiro quilombo urbano'
+    ],
+    correta: 1,
+    explicacao: 'Ailton Krenak é uma das vozes mais importantes dos povos originários no Brasil. Participou da Constituinte de 1988 e escreveu obras como "Ideias para adiar o fim do mundo".'
+  }
+];
+
+function initQuiz() {
+  const questionEl = document.getElementById('quizQuestion');
+  const optionsEl = document.getElementById('quizOptions');
+  const feedbackEl = document.getElementById('quizFeedback');
+  const counterEl = document.getElementById('quizCounter');
+  const progressBar = document.getElementById('progressBar');
+  const btnNext = document.getElementById('btnNext');
+  const btnRestart = document.getElementById('btnRestart');
+  const scoreEl = document.getElementById('quizScore');
+  const scoreNumber = document.getElementById('scoreNumber');
+  const scoreMessage = document.getElementById('scoreMessage');
+
+  if (!questionEl || !optionsEl) return;
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  function renderQuestion() {
+    answered = false;
+    const q = quizData[current];
+
+    questionEl.innerHTML = `<h3>${q.pergunta}</h3>`;
+    optionsEl.innerHTML = '';
+    feedbackEl.hidden = true;
+    feedbackEl.className = 'quiz-feedback';
+    btnNext.hidden = true;
+    btnRestart.hidden = true;
+    scoreEl.hidden = true;
+
+    q.opcoes.forEach((opcao, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.type = 'button';
+      btn.textContent = opcao;
+      btn.addEventListener('click', () => selectOption(index, btn));
+      optionsEl.appendChild(btn);
+    });
+
+    counterEl.textContent = `Pergunta ${current + 1} de ${quizData.length}`;
+    progressBar.style.width = `${((current + 1) / quizData.length) * 100}%`;
+  }
+
+  function selectOption(index, btn) {
+    if (answered) return;
+    answered = true;
+
+    const q = quizData[current];
+    const botoes = optionsEl.querySelectorAll('.quiz-option');
+
+    botoes.forEach(b => b.disabled = true);
+
+    if (index === q.correta) {
+      btn.classList.add('correct');
+      score++;
+      feedbackEl.textContent = '✓ Correto! ' + q.explicacao;
+      feedbackEl.classList.add('correct');
+    } else {
+      btn.classList.add('wrong');
+      botoes[q.correta].classList.add('correct');
+      feedbackEl.textContent = '✗ Não foi dessa vez. ' + q.explicacao;
+      feedbackEl.classList.add('wrong');
+    }
+
+    feedbackEl.hidden = false;
+
+    if (current < quizData.length - 1) {
+      btnNext.hidden = false;
+    } else {
+      showScore();
+    }
+  }
+
+  function showScore() {
+    scoreEl.hidden = false;
+    scoreNumber.textContent = `${score}/${quizData.length}`;
+
+    let msg = '';
+    const pct = (score / quizData.length) * 100;
+    if (pct === 100) msg = 'Excelente! Você domina os conceitos de letramento racial.';
+    else if (pct >= 70) msg = 'Muito bem! Continue aprofundando seus conhecimentos.';
+    else if (pct >= 40) msg = 'Bom começo. Revise os conteúdos e tente novamente.';
+    else msg = 'Que tal explorar as seções de Biografias e Conceitos e tentar de novo?';
+
+    scoreMessage.textContent = msg;
+    btnRestart.hidden = false;
+  }
+
+  btnNext.addEventListener('click', () => {
+    current++;
+    renderQuestion();
+  });
+
+  btnRestart.addEventListener('click', () => {
+    current = 0;
+    score = 0;
+    renderQuestion();
+  });
+
+  renderQuestion();
+}
+
+/* ---------- FATOS DINÂMICOS ---------- */
+const fatos = [
+  'O Quilombo dos Palmares chegou a reunir dezenas de milhares de pessoas e resistiu por quase um século às tentativas de destruição colonial.',
+  'Maria Firmina dos Reis publicou Úrsula em 1859, décadas antes da abolição, tornando-se a primeira romancista negra da América Latina.',
+  'O Dia da Consciência Negra (20 de novembro) marca a morte de Zumbi dos Palmares em 1695 e foi oficializado em vários estados antes de se tornar feriado nacional em alguns locais.',
+  'Ailton Krenak, ao pintar o rosto de preto na Assembleia Constituinte de 1987, denunciou o genocídio dos povos indígenas e marcou a história da luta por direitos.',
+  'Sankofa é um adinkra (símbolo) do povo Akan que representa a ideia de que não é tabu voltar atrás para recuperar o que foi esquecido.',
+  'A capoeira, desenvolvida por africanos escravizados no Brasil, unia luta, dança e resistência cultural e foi proibida por muito tempo.',
+  'Sueli Carneiro fundou o Geledés – Instituto da Mulher Negra, uma das organizações mais importantes do movimento negro e feminista no Brasil.',
+  'Sonia Guajajara tornou-se a primeira mulher indígena a ocupar o cargo de Ministra dos Povos Indígenas no Brasil.',
+  'Mais de 1.300 comunidades quilombolas são oficialmente reconhecidas no Brasil, preservando territórios, cultura e modos de vida.',
+  'O conceito de "racismo estrutural" ajuda a entender por que desigualdades raciais persistem mesmo após a abolição formal da escravidão.'
+];
+
+function initFatos() {
+  const textoEl = document.getElementById('fatoTexto');
+  const btn = document.getElementById('btnNovoFato');
+  if (!textoEl || !btn) return;
+
+  let ultimo = -1;
+
+  btn.addEventListener('click', () => {
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * fatos.length);
+    } while (idx === ultimo && fatos.length > 1);
+    ultimo = idx;
+    textoEl.style.opacity = '0';
+    setTimeout(() => {
+      textoEl.textContent = fatos[idx];
+      textoEl.style.opacity = '1';
+    }, 200);
+  });
+
+  textoEl.style.transition = 'opacity 0.2s ease';
+}
+  </script>
+</body>
+</html>
